@@ -430,7 +430,7 @@ export default function Home() {
             </div>
             <div className="mt-12 pt-12 border-t border-rose-300">
               <p className="text-gray-700">📧 <a href="mailto:fiorifinticupcakes@gmail.com" className="hover:text-rose-600 transition-colors">fiorifinticupcakes@gmail.com</a></p>
-              <p className="text-gray-700 mt-2">📱 <a href="tel:3233034851" className="hover:text-rose-600 transition-colors">323.303.4851</a></p>
+              <p className="text-gray-700 mt-2">📱 <a href="tel:3233034851" className="hover:text-rose-600 transition-colors">(323) 303-4851</a></p>
               <p className="text-gray-700 mt-2">📍 Hollywood, CA</p>
               <p className="text-sm text-gray-500 mt-4">✓ Certified Food Handler</p>
             </div>
