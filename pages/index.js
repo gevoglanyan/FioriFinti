@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 export default function Home() {
   const [activeImage, setActiveImage] = useState(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const cupcakeGallery = [
     { id: 1, name: "Rose Garden", description: "Buttercream roses on vanilla cupcake" },
@@ -25,16 +26,71 @@ export default function Home() {
 
       <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50">
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-pink-100">
-          <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div className="text-3xl font-serif text-rose-900">Fior Finti</div>
-            <div className="flex gap-8 text-sm tracking-wide text-gray-800 font-medium">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+            <div className="text-2xl sm:text-3xl font-serif text-rose-900">Fior Finti</div>
+            
+            <div className="hidden md:flex gap-8 text-sm tracking-wide text-gray-800 font-medium">
               <a href="#about" className="hover:text-rose-600 transition-colors">About</a>
               <a href="#gallery" className="hover:text-rose-600 transition-colors">Gallery</a>
               <a href="#faq" className="hover:text-rose-600 transition-colors">FAQ</a>
               <a href="#order" className="hover:text-rose-600 transition-colors">Order</a>
               <a href="#contact" className="hover:text-rose-600 transition-colors">Contact</a>
             </div>
+            
+            <div className="md:hidden flex items-center gap-3">
+              <a href="#order" className="px-4 py-2 bg-rose-600 text-white rounded-full text-sm font-medium">
+                Order
+              </a>
+              <button 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 text-gray-800 hover:text-rose-600 transition-colors"
+                aria-label="Toggle menu"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {mobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
           </div>
+          
+          {mobileMenuOpen && (
+            <div className="md:hidden bg-white border-t border-pink-100 shadow-lg">
+              <div className="px-4 py-6 space-y-4">
+                <a 
+                  href="#about" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-center text-gray-800 hover:text-rose-600 transition-colors py-2 text-lg"
+                >
+                  About
+                </a>
+                <a 
+                  href="#gallery" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-center text-gray-800 hover:text-rose-600 transition-colors py-2 text-lg"
+                >
+                  Gallery
+                </a>
+                <a 
+                  href="#faq" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-center text-gray-800 hover:text-rose-600 transition-colors py-2 text-lg"
+                >
+                  FAQ
+                </a>
+                <a 
+                  href="#contact" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block text-center text-gray-800 hover:text-rose-600 transition-colors py-2 text-lg"
+                >
+                  Contact
+                </a>
+              </div>
+            </div>
+          )}
         </nav>
 
         <section className="pt-32 pb-20 px-6">
@@ -70,11 +126,10 @@ export default function Home() {
         <section id="about" className="py-20 px-6">
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
+              <div className="space-y-6 text-center md:text-left">
                 <h2 className="text-5xl font-serif text-rose-900">Meet Lilit</h2>
                 <p className="text-lg text-gray-800 leading-relaxed">
-                  Hi! I'm Lilit, a cupcake artist based in Hollywood, CA. Fior Finti, meaning "artificial flowers" 
-                  in Italian, is all about creating cupcakes that look like beautiful flowers. Each cupcake is 
+                  Hi! I'm Lilit, a cupcake artist based in Hollywood, CA. Each cupcake is 
                   carefully designed and decorated to resemble delicate blooms.
                 </p>
                 <p className="text-lg text-gray-800 leading-relaxed">
@@ -82,7 +137,7 @@ export default function Home() {
                   to look at but delicious to eat. Every order is made fresh to order, ensuring you receive 
                   the best for your special moments.
                 </p>
-                <div className="flex gap-6 pt-4">
+                <div className="flex flex-wrap justify-center md:justify-start gap-6 pt-4">
                   <div className="text-center">
                     <div className="text-3xl font-serif text-rose-600">100+</div>
                     <div className="text-sm text-gray-800 font-medium">Floral Designs</div>
@@ -100,23 +155,23 @@ export default function Home() {
               <div className="relative">
                 <div className="aspect-square bg-gradient-to-br from-rose-200 to-pink-300 rounded-full opacity-20 absolute inset-0 blur-3xl"></div>
                 <div className="relative bg-white p-8 rounded-2xl shadow-xl border border-pink-100">
-                  <div className="text-6xl mb-4">🧁</div>
-                  <h3 className="text-2xl font-serif text-rose-900 mb-3">What Makes Us Special</h3>
+                  <div className="text-6xl mb-4 text-center">🧁</div>
+                  <h3 className="text-2xl font-serif text-rose-900 mb-3 text-center">What Makes Us Special</h3>
                   <ul className="space-y-3 text-gray-800">
                     <li className="flex items-start gap-2">
-                      <span className="text-rose-500 mt-1">✓</span>
+                      <span className="text-rose-500 mt-1 flex-shrink-0">✓</span>
                       <span>All-natural, quality ingredients</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-rose-500 mt-1">✓</span>
+                      <span className="text-rose-500 mt-1 flex-shrink-0">✓</span>
                       <span>Buttercream designed to look like flowers</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-rose-500 mt-1">✓</span>
+                      <span className="text-rose-500 mt-1 flex-shrink-0">✓</span>
                       <span>Custom designs for any occasion</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-rose-500 mt-1">✓</span>
+                      <span className="text-rose-500 mt-1 flex-shrink-0">✓</span>
                       <span>Made fresh to order</span>
                     </li>
                   </ul>
@@ -144,7 +199,7 @@ export default function Home() {
                       {['🌹', '💜', '🌸', '🌼', '🌻', '🌺'][index]}
                     </div>
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 text-center md:text-left">
                     <h3 className="text-2xl font-serif text-rose-900 mb-2">{item.name}</h3>
                     <p className="text-gray-800">{item.description}</p>
                   </div>
@@ -165,7 +220,7 @@ export default function Home() {
             </div>
             
             <div className="space-y-6">
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100">
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100 text-center md:text-left">
                 <h3 className="text-xl font-serif text-rose-900 mb-3">How far in advance should I order?</h3>
                 <p className="text-gray-800">
                   For best results, please order at least 3-5 days in advance. For large orders (24+ cupcakes) or 
@@ -173,41 +228,42 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100">
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100 text-center md:text-left">
                 <h3 className="text-xl font-serif text-rose-900 mb-3">What flavors do you offer?</h3>
                 <p className="text-gray-800 mb-3">
                   Our signature flavors include:
                 </p>
-                <div className="grid md:grid-cols-2 gap-2 text-gray-800">
-                  <div className="flex items-center gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-800 mx-auto max-w-md md:max-w-none">
+                  <div className="flex items-center justify-center md:justify-start gap-2">
                     <span className="text-rose-500">•</span>
                     <span>Classic Vanilla</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-center md:justify-start gap-2">
                     <span className="text-rose-500">•</span>
                     <span>Rich Chocolate</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-center md:justify-start gap-2">
                     <span className="text-rose-500">•</span>
                     <span>Red Velvet</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-center md:justify-start gap-2">
                     <span className="text-rose-500">•</span>
                     <span>Lemon Zest</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-center md:justify-start gap-2">
                     <span className="text-rose-500">•</span>
                     <span>Strawberry</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-center md:justify-start gap-2">
                     <span className="text-rose-500">•</span>
                     <span>Lavender Vanilla</span>
                   </div>
                 </div>
+                <br />
                 <p className="text-gray-700 text-sm mt-3">Custom flavors available upon request!</p>
               </div>
 
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100">
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100 text-center md:text-left">
                 <h3 className="text-xl font-serif text-rose-900 mb-3">Do you deliver?</h3>
                 <p className="text-gray-800">
                   Yes! We offer delivery throughout the Hollywood and greater Los Angeles area. Delivery fees vary 
@@ -215,14 +271,14 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100">
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100 text-center md:text-left">
                 <h3 className="text-xl font-serif text-rose-900 mb-3">What is the minimum order?</h3>
                 <p className="text-gray-800">
                   Our minimum order is 6 cupcakes. We offer packages of 6, 12, 24, or custom quantities for larger events.
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100">
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100 text-center md:text-left">
                 <h3 className="text-xl font-serif text-rose-900 mb-3">Can I customize the floral designs?</h3>
                 <p className="text-gray-800">
                   Absolutely! Each order is custom-made. Let me know your color preferences, flower types, or event 
@@ -230,7 +286,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100">
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100 text-center md:text-left">
                 <h3 className="text-xl font-serif text-rose-900 mb-3">Do you accommodate dietary restrictions?</h3>
                 <p className="text-gray-800">
                   Please let me know about any allergies or dietary needs when you order. While my standard recipes 
@@ -242,7 +298,7 @@ export default function Home() {
         </section>
 
         <section id="order" className="py-20 px-6">
-          <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl p-12 border border-pink-100">
+          <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-pink-100">
             <div className="text-center mb-12">
               <h2 className="text-5xl font-serif text-rose-900 mb-4">Order Your Blooms</h2>
               <p className="text-lg text-gray-800">Let us create something beautiful for your special occasion</p>
@@ -281,7 +337,7 @@ export default function Home() {
                     type="tel"
                     name="phone"
                     className="w-full px-4 py-3 border border-pink-200 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent outline-none transition-all"
-                    placeholder="(323) 303-4851"
+                    placeholder="(123) 456-7890"
                   />
                 </div>
                 <div>
@@ -296,11 +352,11 @@ export default function Home() {
                 <div>
                   <label className="block text-sm font-medium text-gray-800 mb-2">Quantity *</label>
                   <select name="quantity" required className="w-full px-4 py-3 border border-pink-200 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent outline-none transition-all">
-                    <option value="">Select quantity</option>
-                    <option value="6">6 cupcakes</option>
-                    <option value="12">12 cupcakes</option>
-                    <option value="24">24 cupcakes</option>
-                    <option value="custom">Custom amount</option>
+                    <option value="">Select Quantity</option>
+                    <option value="6">6 Cupcakes</option>
+                    <option value="12">12 Cupcakes</option>
+                    <option value="24">24 Cupcakes</option>
+                    <option value="custom">Custom Amount</option>
                   </select>
                 </div>
               </div>
@@ -308,7 +364,7 @@ export default function Home() {
                 <div>
                   <label className="block text-sm font-medium text-gray-800 mb-2">Delivery or Pickup *</label>
                   <select name="delivery_method" required className="w-full px-4 py-3 border border-pink-200 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent outline-none transition-all">
-                    <option value="">Select option</option>
+                    <option value="">Select Option</option>
                     <option value="delivery">Delivery</option>
                     <option value="pickup">Pickup</option>
                   </select>
@@ -384,26 +440,26 @@ export default function Home() {
         <section className="py-20 px-6 bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50">
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-2xl p-8 shadow-xl border border-pink-100">
+              <div className="bg-white rounded-2xl p-8 shadow-xl border border-pink-100 text-center md:text-left">
                 <div className="text-4xl mb-4">💳</div>
                 <h3 className="text-2xl font-serif text-rose-900 mb-4">Payment Methods</h3>
                 <p className="text-gray-800 mb-4">
                   We make it easy to pay for your beautiful cupcakes:
                 </p>
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-center md:justify-start gap-3">
                     <div className="w-8 h-8 bg-rose-100 rounded-full flex items-center justify-center text-rose-600">✓</div>
                     <span className="text-gray-800">Venmo</span>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-center md:justify-start gap-3">
                     <div className="w-8 h-8 bg-rose-100 rounded-full flex items-center justify-center text-rose-600">✓</div>
                     <span className="text-gray-800">Zelle</span>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-center md:justify-start gap-3">
                     <div className="w-8 h-8 bg-rose-100 rounded-full flex items-center justify-center text-rose-600">✓</div>
                     <span className="text-gray-800">Cash</span>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-center md:justify-start gap-3">
                     <div className="w-8 h-8 bg-rose-100 rounded-full flex items-center justify-center text-rose-600">✓</div>
                     <span className="text-gray-800">Credit/Debit Cards</span>
                   </div>
@@ -413,7 +469,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-xl border border-pink-100">
+              <div className="bg-white rounded-2xl p-8 shadow-xl border border-pink-100 text-center md:text-left">
                 <div className="text-4xl mb-4">📋</div>
                 <h3 className="text-2xl font-serif text-rose-900 mb-4">Cancellation Policy</h3>
                 <div className="space-y-4 text-gray-800">
@@ -439,7 +495,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-8 bg-white rounded-2xl p-8 shadow-xl border border-pink-100">
+            <div className="mt-8 bg-white rounded-2xl p-8 shadow-xl border border-pink-100 text-center md:text-left">
               <h3 className="text-2xl font-serif text-rose-900 mb-4">Important Information</h3>
               <div className="grid md:grid-cols-2 gap-6 text-gray-800">
                 <div>
@@ -477,7 +533,7 @@ export default function Home() {
 
         <footer className="bg-rose-900 text-white py-16 px-6">
           <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-12 mb-12">
+            <div className="grid md:grid-cols-3 gap-12 mb-12 text-center md:text-left">
               <div>
                 <div className="text-4xl font-serif mb-4">Fior Finti</div>
                 <p className="text-rose-200 mb-2">Lilit | Cupcake Artist</p>
@@ -499,14 +555,14 @@ export default function Home() {
                 <h4 className="text-lg font-medium mb-4">Get In Touch</h4>
                 <div className="space-y-2 text-rose-200">
                   <p>📧 <a href="mailto:fiorifinticupcakes@gmail.com" className="hover:text-white transition-colors">fiorifinticupcakes@gmail.com</a></p>
-                  <p>📱 <a href="tel:3233034851" className="hover:text-white transition-colors">323.303.4851</a></p>
+                  <p>📱 <a href="tel:3233034851" className="hover:text-white transition-colors">(323) 303-4851</a></p>
                   <p>📍 Hollywood, CA</p>
                   <p className="pt-2">
                     <a 
                       href="https://www.instagram.com/fiori.finti.cupcakes/" 
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 hover:text-white transition-colors"
+                      className="inline-flex items-center justify-center md:justify-start gap-2 hover:text-white transition-colors"
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -518,8 +574,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="pt-8 border-t border-rose-800 flex flex-col md:flex-row justify-between items-center gap-4 text-rose-300 text-sm">
-              <p>© 2026 Fior Finti Cupcakes. All Rights Reserved.</p>
+            <div className="pt-8 border-t border-rose-800 flex flex-col md:flex-row justify-between items-center gap-4 text-rose-300 text-sm text-center">
+              <p>© 2026 Fior Finti. All Rights Reserved.</p>
               <p>
                 Created by{' '}
                 <a 
