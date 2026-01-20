@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Fior Finti Cupcakes</title>
+        <title>Fiori Finti Cupcakes</title>
         <meta name="description" content="Handcrafted floral cupcakes that transform every celebration into an elegant garden party. Made with love in every petal." />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
@@ -27,7 +27,7 @@ export default function Home() {
       <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50">
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-pink-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
-            <div className="text-2xl sm:text-3xl font-serif text-rose-900">Fior Finti</div>
+            <div className="text-2xl sm:text-3xl font-serif text-rose-900">Fiori Finti</div>
             
             <div className="hidden md:flex gap-8 text-sm tracking-wide text-gray-800 font-medium">
               <a href="#about" className="hover:text-rose-600 transition-colors">About</a>
@@ -99,7 +99,7 @@ export default function Home() {
               <div className="text-6xl">🌸</div>
             </div>
             <h1 className="text-7xl md:text-8xl font-serif font-light text-rose-900 mb-6 animate-fadeIn">
-              Fior Finti
+              Fiori Finti
             </h1>
             <p className="text-2xl md:text-3xl font-serif italic text-rose-800 mb-4 animate-fadeIn animation-delay-200">
               Where Every Cupcake Blooms
@@ -304,7 +304,7 @@ export default function Home() {
               <p className="text-lg text-gray-800">Let us create something beautiful for your special occasion</p>
             </div>
             <form action="https://formsubmit.co/fiorifinticupcakes@gmail.com" method="POST" className="space-y-6">
-              <input type="hidden" name="_subject" value="New Cupcake Order from FiorFinti.com" />
+              <input type="hidden" name="_subject" value="New Cupcake Order from FioriFintiCupcakes.com" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
               
@@ -535,7 +535,7 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-3 gap-12 mb-12 text-center md:text-left">
               <div>
-                <div className="text-4xl font-serif mb-4">Fior Finti</div>
+                <div className="text-4xl font-serif mb-4">Fiori Finti</div>
                 <p className="text-rose-200 mb-2">Lilit | Cupcake Artist</p>
                 <p className="text-rose-200">Cupcakes designed to look like beautiful flowers</p>
               </div>
